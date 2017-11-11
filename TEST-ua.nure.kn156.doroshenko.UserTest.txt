@@ -1,5 +1,5 @@
 Testsuite: ua.nure.kn156.doroshenko.UserTest
-Tests run: 2, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0,011 sec
+Tests run: 2, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0,032 sec
 
-Testcase: testGetFullName took 0,003 sec
+Testcase: testGetFullName took 0,025 sec
 Testcase: testgetAge took 0 sec

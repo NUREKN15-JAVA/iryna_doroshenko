@@ -8,6 +8,21 @@ public class User {
 	private String firstName;
 	private String lasttName;
 	private Date dateOfBirthd;
+	public User(String firstName, String lastName, Date now) {
+		this.firstName = firstName;
+		this.lasttName = lastName;
+		this.dateOfBirthd = now;
+	}
+	public User(Long id, String firstName, String lastName, Date date) {
+		this.id = id;
+		this.firstName = firstName;
+		this.lasttName = lastName;
+		this.dateOfBirthd = date;
+		
+	}
+	public User() {
+		
+	}
 	public Long getId() {
 		return id;
 	}
@@ -53,6 +68,31 @@ public class User {
 		
 	
 		return currentYear-yearOfBirthd;
+	}
+	
+	public boolean equals(Object obj){
+		
+		if(obj==null){
+			return false;
+		}
+		
+		if(this == obj){
+			return true;
+		}
+		
+		if(this.getId()==null && ((User)obj).getId()==null){
+			return true;
+		}
+		
+		
+		return this.getId().equals(((User)obj).getId());
+	}
+	
+	public int hashCode(){
+		if(this.getId() == null){
+			return 0;
+		}
+		return this.getId().hashCode();
 	}
 
 }
