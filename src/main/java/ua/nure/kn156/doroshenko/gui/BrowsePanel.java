@@ -14,6 +14,9 @@ import javax.swing.JTable;
 
 import ua.nure.kn156.doroshenko.db.DatabaseException;
 import ua.nure.kn156.doroshenko.util.Messages;
+import ua.nure.kn156.doroshenko.User;
+import ua.nure.kn156.doroshenko.gui.UserTableModel;
+
 
 public class BrowsePanel extends JPanel implements ActionListener {
 
@@ -131,7 +134,46 @@ public class BrowsePanel extends JPanel implements ActionListener {
 			this.setVisible(false);
 			parent.showAddPanel();
 			
-		}
+		}else if ("delete".equalsIgnoreCase(actionCommand)) { //$NON-NLS-1$
+            int selectedRow = userTable.getSelectedRow();
+            if (selectedRow == -1) {
+                JOptionPane.showMessageDialog(this, "Выберите пользователя",
+                        "Edit user", JOptionPane.INFORMATION_MESSAGE);
+                return;
+            }
+            try {
+                parent.getDao().delete(
+                        ((UserTableModel) userTable.getModel())
+                                .getUser(selectedRow));
+            } catch (DatabaseException e1) {
+                JOptionPane.showMessageDialog(this, e1.getMessage(), "Error",
+                        JOptionPane.ERROR_MESSAGE);
+            }
+            initTable();
+            return;
+        } else if ("details".equalsIgnoreCase(actionCommand)) { //$NON-NLS-1$
+        	int selectedRow = userTable.getSelectedRow();
+            if (selectedRow == -1) {
+                JOptionPane.showMessageDialog(this, "Выберите пользователя",
+                        "Edit user", JOptionPane.INFORMATION_MESSAGE);
+                return;
+            }
+            User user = ((UserTableModel) userTable.getModel())
+                    .getUser(selectedRow);
+            this.setVisible(false);
+            parent.showDetailsPanel(user);
+        } else if ("edit".equalsIgnoreCase(actionCommand)) { //$NON-NLS-1$
+            int selectedRow = userTable.getSelectedRow();
+            if (selectedRow == -1) {
+                JOptionPane.showMessageDialog(this, "Выберите пользователя",
+                        "Edit user", JOptionPane.INFORMATION_MESSAGE);
+                return;
+            }
+            User user = ((UserTableModel) userTable.getModel())
+                    .getUser(selectedRow);
+            this.setVisible(false);
+            parent.showEditPanel(user);
+        }
 		
 	}
 

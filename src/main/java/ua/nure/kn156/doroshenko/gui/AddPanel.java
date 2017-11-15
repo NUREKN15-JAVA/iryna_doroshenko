@@ -22,8 +22,8 @@ import ua.nure.kn156.doroshenko.db.DatabaseException;
 import ua.nure.kn156.doroshenko.util.Messages;
 
 public class AddPanel extends JPanel implements ActionListener {
-	private MainFrame parent;
-	private JPanel buttonPanel;
+	protected MainFrame parent;
+	protected JPanel buttonPanel;
 	private JButton cancelButton;
 	private JButton okButton;
 	private JPanel fieldPanel;
@@ -87,7 +87,7 @@ public class AddPanel extends JPanel implements ActionListener {
 		return fieldPanel;
 	}
 
-	private JTextField getDateOfBirthField() {
+	protected JTextField getDateOfBirthField() {
 		if(dateOfBirthField==null){
 			dateOfBirthField = new JTextField();
 			dateOfBirthField.setName("dateOfBirthField"); //$NON-NLS-1$
@@ -95,7 +95,7 @@ public class AddPanel extends JPanel implements ActionListener {
 		return dateOfBirthField;
 	}
 
-	private JTextField getLastNameField() {
+	protected JTextField getLastNameField() {
 		if(lastNameField==null){
 			lastNameField = new JTextField();
 			lastNameField.setName("lastNameField"); //$NON-NLS-1$
@@ -114,7 +114,7 @@ public class AddPanel extends JPanel implements ActionListener {
 		
 	}
 
-	private JTextField getFirstNameField() {
+	protected JTextField getFirstNameField() {
 		if(firstNameField==null){
 			firstNameField = new JTextField();
 			firstNameField.setName("firstNameField"); //$NON-NLS-1$
@@ -125,15 +125,15 @@ public class AddPanel extends JPanel implements ActionListener {
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		/*try {
+		try {
             doAction(e);
         } catch (ParseException e1) {
             return;
         }
-        clearFields();
-        this.setVisible(false);*/
+       // clearFields();
+      //  this.setVisible(false);
        // parent.showBrowsePanel();
-		if("ok".equalsIgnoreCase( e.getActionCommand())){
+		/*if("ok".equalsIgnoreCase( e.getActionCommand())){
 			User user = new User();
 			user.setFirstName(getFirstNameField().getText());
 			user.setLasttName(getLastNameField().getText());
@@ -152,7 +152,7 @@ public class AddPanel extends JPanel implements ActionListener {
 			} catch (DatabaseException e1) {
 				JOptionPane.showMessageDialog(this, e1.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
 			}
-		}
+		}*/
 		clearFields();
 		this.setVisible(false);
 		parent.showBrowsePanel();
@@ -172,7 +172,7 @@ public class AddPanel extends JPanel implements ActionListener {
 		
 		
 	}
-	/*protected void doAction(ActionEvent e) throws ParseException {
+	protected void doAction(ActionEvent e) throws ParseException {
         if ("ok".equalsIgnoreCase(e.getActionCommand())) {
             User user = new User();
             user.setFirstName(getFirstNameField().getText());
@@ -192,6 +192,6 @@ public class AddPanel extends JPanel implements ActionListener {
                         JOptionPane.ERROR_MESSAGE);
             }
         }
-    }*/
+    }
 
 }

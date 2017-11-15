@@ -55,5 +55,9 @@ public class UserTableModel extends AbstractTableModel {
     public String getColumnName(int column) {
         return COLUMN_NAMES[column];
     }
+    
+    public User getUser(int index) {
+        return (User) users.get(index);
+    }
 
 }

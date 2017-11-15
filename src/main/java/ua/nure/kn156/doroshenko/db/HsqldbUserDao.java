@@ -166,7 +166,10 @@ public class HsqldbUserDao implements UserDao {
 				user.setDateOfBirthd(resultSet.getDate(4));
 				result.add(user);
 			}
-				
+			resultSet.close();
+			statement.close();
+			connection.close();
+			return result;	
 			
 
 		} catch (DatabaseException e) {
@@ -176,7 +179,7 @@ public class HsqldbUserDao implements UserDao {
 		}
 		
 		
-		return result;
+	
 	}
 
 }

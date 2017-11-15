@@ -25,5 +25,8 @@ public class DatabaseException extends Exception {
 		super(message, cause, enableSuppression, writableStackTrace);
 		// TODO Auto-generated constructor stub
 	}
+	public DatabaseException(Exception e) {
+		super(e);
+	}
 
 }

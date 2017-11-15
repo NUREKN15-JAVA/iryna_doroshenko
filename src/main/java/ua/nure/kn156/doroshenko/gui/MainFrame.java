@@ -1,6 +1,7 @@
 package ua.nure.kn156.doroshenko.gui;
 
 import java.awt.BorderLayout;
+import ua.nure.kn156.doroshenko.User;
 import java.awt.Component;
 import java.awt.Container;
 
@@ -11,6 +12,8 @@ import ua.nure.kn156.doroshenko.db.DaoFactory;
 import ua.nure.kn156.doroshenko.db.HsqldbUserDao;
 import ua.nure.kn156.doroshenko.db.UserDao;
 import ua.nure.kn156.doroshenko.util.Messages;
+import ua.nure.kn156.doroshenko.gui.EditPanel;
+import ua.nure.kn156.doroshenko.gui.DetailsPanel;
 
 public class MainFrame extends JFrame {
 	
@@ -19,6 +22,8 @@ public class MainFrame extends JFrame {
 	private JPanel contentPanel;
 	private JPanel browsePanel;
 	private AddPanel addPanel;
+	private DetailsPanel detailsPanel;
+	private EditPanel editPanel;
 	private UserDao dao;
 
 	public MainFrame(){
@@ -86,6 +91,32 @@ public class MainFrame extends JFrame {
 		}
 	
 		return addPanel;
+	}
+	
+	public void showDetailsPanel(User user) {
+		getDetailsPanel().setUser(user);
+		showPanel(getDetailsPanel());
+
+	}
+	
+	private DetailsPanel getDetailsPanel() {
+		if (detailsPanel == null) {
+			detailsPanel = new DetailsPanel(this);
+		}
+		return detailsPanel;
+	}
+	
+	public void showEditPanel(User user) {
+		getEditPanel().setUser(user);
+		showPanel(getEditPanel());
+
+	}
+	
+	private EditPanel getEditPanel() {
+		if (editPanel == null) {
+			editPanel = new EditPanel(this);
+		}
+		return editPanel;
 	}
 
 }

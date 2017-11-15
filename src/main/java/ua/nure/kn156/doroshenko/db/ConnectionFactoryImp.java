@@ -23,22 +23,26 @@ public class ConnectionFactoryImp implements ConnectionFactory {
 	}
 
 	public ConnectionFactoryImp(Properties properties) {
-		String user = properties.getProperty("connection.user");
+		String user ="sa";
+		String password = "";
+		String url = "jdbc:hsqldb:file:db/usermanagement";
+		String driver = "org.hsqldb.jdbcDriver";
+		/*String user = properties.getProperty("connection.user");
 		String password = properties.getProperty("connection.password");
 		String url = properties.getProperty("connection.url");
-		String driver = properties.getProperty("connection.driver");
+		String driver = properties.getProperty("connection.driver");*/
 	}
 
 	@Override
 	public Connection createConnection() throws DatabaseException {
 		try {
-			Class.forName(driver);
+			Class.forName("org.hsqldb.jdbcDriver");
 		} catch (ClassNotFoundException e) {
 			
 			throw new RuntimeException(e);
 		}
 		try {
-			return DriverManager.getConnection(url, user, password);
+			return DriverManager.getConnection("jdbc:hsqldb:file:db/usermanagement", "sa", "");
 		} catch (SQLException e) {
 			throw new DatabaseException(e);
 		}
