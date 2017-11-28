@@ -1,0 +1,11 @@
+Testsuite: ua.nure.kn156.doroshenko.gui.MainFrameTest
+Tests run: 1, Failures: 0, Errors: 1, Skipped: 0, Time elapsed: 0 sec
+
+Testcase: testCancelEditUser took 0,001 sec
+	Caused an ERROR
+Forked Java VM exited abnormally. Please note the time in the report does not reflect the time until the VM exit.
+junit.framework.AssertionFailedError: Forked Java VM exited abnormally. Please note the time in the report does not reflect the time until the VM exit.
+	at org.eclipse.ant.internal.launching.remote.EclipseDefaultExecutor.executeTargets(EclipseDefaultExecutor.java:36)
+	at org.eclipse.ant.internal.launching.remote.InternalAntRunner.run(InternalAntRunner.java:460)
+	at org.eclipse.ant.internal.launching.remote.InternalAntRunner.main(InternalAntRunner.java:142)
+
