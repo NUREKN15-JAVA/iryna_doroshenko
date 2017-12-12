@@ -5,6 +5,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 import ua.nure.kn156.doroshenko.User;
+import ua.nure.kn156.doroshenko.agent.SearchException;
 
 public class MockUserDao implements UserDao {
 	private long id = 0;
@@ -48,5 +49,12 @@ public class MockUserDao implements UserDao {
 		// TODO Auto-generated method stub
 
 	}
+
+	
+	public Collection find(String firstName, String LastName) throws DatabaseException {
+		throw new UnsupportedOperationException();
+	}
+	
+	
 
 }

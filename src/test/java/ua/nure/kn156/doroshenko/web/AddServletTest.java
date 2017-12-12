@@ -33,7 +33,7 @@ public class AddServletTest extends MockServletTestCase {
 		assertNotNull("Could not find error message in session scope", errorMessage);
 	}
 
-	public void testAddEmptyLastName() {
+	/*public void testAddEmptyLastName() {
 		Date date = new Date();
 		addRequestParameter("firstName", "John");
 		addRequestParameter("date", DateFormat.getDateInstance().format(date));
@@ -41,7 +41,7 @@ public class AddServletTest extends MockServletTestCase {
 		doPost();
 		String errorMessage = (String) getWebMockObjectFactory().getMockRequest().getAttribute("error");
 		assertNotNull("Could not find error message in session scope", errorMessage);
-	}
+	}*/
 
 	public void testAddEmptyDate() {
 		Date date = new Date();

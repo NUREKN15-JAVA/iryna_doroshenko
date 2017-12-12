@@ -19,6 +19,7 @@ public class HsqldbUserDao implements UserDao {
 	private static final String INSERT_USERS_QUERY = "INSERT INTO users (firstname, lastname, dateofBirth) VALUES (?, ?, ?) ";
 	private static final String SELECT_USERS_QUERY = "SELECT id, firstname, lastname, dateofbirth FROM users WHERE id=?";
 	private static final String DELETE_USERS_QUERY = "DELETE FROM users WHERE id=?";
+	private static final String SELECT_BY_NAMES = "SELECT id, firstname, lastname, dateofbirth FROM users WHERE firstname=? AND lastname=?";
 	private ConnectionFactory connectionFactory;
 	 
 	 public HsqldbUserDao() {
@@ -182,5 +183,32 @@ public class HsqldbUserDao implements UserDao {
 	
 	}
 
+	
+	public Collection find(String firstName, String LastName) throws DatabaseException {
+		 Collection result = new LinkedList();
+
+	        try {
+	            Connection connection = connectionFactory.createConnection();
+	            PreparedStatement statement = connection
+	                    .prepareStatement(SELECT_BY_NAMES);
+	            statement.setString(1, firstName);
+	            statement.setString(2, LastName);
+	            ResultSet resultSet = statement.executeQuery();
+	            while (resultSet.next()) {
+	                User user = new User();
+	                user.setId(new Long(resultSet.getLong(1)));
+	                user.setFirstName(resultSet.getString(2));
+	                user.setLasttName(resultSet.getString(3));
+	                user.setDateOfBirthd(resultSet.getDate(4));
+	                result.add(user);
+	            }
+	        } catch (DatabaseException e) {
+	            throw e;
+	        } catch (SQLException e) {
+	            throw new DatabaseException(e);
+	        }
+
+	        return result;
+	}
 }
 
